@@ -3,10 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import NoResultFound
 
 def get_posts_da(db: Session):
-    print('data access ran')
-    posts = db.query(Post).all()
-    print(posts, 'these are the posts')
-    return posts
+    return db.query(Post).all()
 
 def get_post_da(id, db: Session):
     return db.query(Post).filter(Post.id == id).first()

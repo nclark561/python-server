@@ -20,7 +20,6 @@ router = APIRouter()
 
 @router.get("/posts", response_model = list[PostResponse])
 async def get_posts(db: Session = Depends(get_db)):
-    print('i ran')
     try:
         posts = get_posts_da(db)
         if posts is None:
