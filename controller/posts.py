@@ -8,6 +8,7 @@ from sqlalchemy.exc import NoResultFound
 
 class PostBase(BaseModel):
     content: str
+    owner_id: str
     
     class Config:
         orm_mode = True
@@ -37,7 +38,7 @@ async def get_post(id, db: Session = Depends(get_db)):
 
 @router.post("/posts", response_model = PostResponse)
 async def create_post(post: PostBase, db: Session = Depends(get_db)):
-    created_post = create_post_da(post.content, db)
+    created_post = create_post_da(post.content, post.owner_id, db)
     if created_post is None:
         raise HTTPException(status_code=400, detail="Failed to create post")
     return created_post

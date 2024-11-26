@@ -8,8 +8,8 @@ def get_posts_da(db: Session):
 def get_post_da(id, db: Session):
     return db.query(Post).filter(Post.id == id).first()
 
-def create_post_da(content: str, db: Session):
-    new_post = Post(content=content)
+def create_post_da(content: str, owner_id, db: Session):
+    new_post = Post(content=content, owner_id=owner_id)
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
