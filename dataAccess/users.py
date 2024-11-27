@@ -1,9 +1,9 @@
-from dataAccess.models import User
+from dataAccess.models import User, Post
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.exc import NoResultFound
 
 def get_user_da(id: str, db: Session):
-    return db.query(User).filter(User.id == id).options(joinedload(User.posts)).first()
+    return db.query(User).filter(User.id == id).options(joinedload(User.posts).joinedload(Post.comments), joinedload(User.comments)).first()
 
 def create_user_da(username: str, db: Session):
     new_user = User(username=username)

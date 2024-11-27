@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from dataAccess.database import get_db
 from sqlalchemy.exc import NoResultFound
 from controller.posts import PostResponse
+from controller.comments import CommentResponse
 
 class UserBase(BaseModel):
     username: str
@@ -16,6 +17,7 @@ class UserBase(BaseModel):
 class UserResponse(UserBase):
     id: str
     posts: list[PostResponse]
+    comments: list[CommentResponse]
 
 router = APIRouter()
 

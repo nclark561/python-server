@@ -5,6 +5,7 @@ from datetime import datetime
 from sqlalchemy.orm import Session
 from dataAccess.database import get_db
 from sqlalchemy.exc import NoResultFound
+from controller.comments import CommentResponse
 
 class PostBase(BaseModel):
     content: str
@@ -16,6 +17,7 @@ class PostBase(BaseModel):
 class PostResponse(PostBase):
     id: str
     date: datetime
+    comments: list[CommentResponse]
 
 router = APIRouter()
 
