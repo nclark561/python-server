@@ -13,4 +13,4 @@ async def get_item(item_id: int):
     if item_id >= 1 and item_id < len(items) + 1:
         return items[item_id - 1]
     else:
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise HTTPException(status_code=404, detail="Item not found.")
