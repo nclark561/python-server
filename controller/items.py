@@ -16,4 +16,4 @@ async def get_item(item_id: int):
         raise HTTPException(status_code=404, detail="Item not found.")
 @router.get("/thanksgiving")    
 async def get_thanksgiving():
-    return "Happy Thanksgiving"
+    return "Happy Thanksgiving!"
